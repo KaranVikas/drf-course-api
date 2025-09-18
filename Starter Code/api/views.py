@@ -17,10 +17,15 @@ from rest_framework.views import APIView
 #     serializer.data
 #   )
  
-class ProductListAPIView(generics.ListAPIView):
-  queryset = Product.objects.filter(stock__gt=0)
-  serializer_class = ProductSerializer
+# create generic view for list only 
+# class ProductListAPIView(generics.ListAPIView):
+#   queryset = Product.objects.filter(stock__gt=0)
+#   serializer_class = ProductSerializer
 
+#created generic class for list and create only
+class ProductListCreateAPIView(generics.ListCreateAPIView):
+  queryset = Product.objects.all()
+  serializer_class = ProductSerializer
 class ProductCreateAPIView(generics.CreateAPIView):
   model = Product
   serializer_class = ProductSerializer
